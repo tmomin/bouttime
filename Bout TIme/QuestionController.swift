@@ -14,21 +14,44 @@ class QuestionController: UIViewController {
     @IBOutlet weak var eventTwo: UIButton!
     @IBOutlet weak var eventThree: UIButton!
     @IBOutlet weak var eventFour: UIButton!
+    @IBOutlet weak var countDownTimer: UILabel!
+    
+    var counter = 60
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        // Apply cornerRadius to the event boxes
         eventOne.layer.cornerRadius = 3
         eventTwo.layer.cornerRadius = 3
         eventThree.layer.cornerRadius = 3
         eventFour.layer.cornerRadius = 3
+        
+        // Start timer
+        var _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // func to update counter once timer starts
+    func updateCounter() {
+        if counter > 0 {
+            counter -= 1
+            countDownTimer.text = "\(counter)"
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
 
