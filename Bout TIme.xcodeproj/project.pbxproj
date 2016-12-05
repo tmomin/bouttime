@@ -36,6 +36,7 @@
 		36F90E8F1DF51A49005F2E10 /* webview_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F90E7B1DF51A49005F2E10 /* webview_bar.png */; };
 		36F90E961DF51D06005F2E10 /* CorrectDing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 36F90E941DF51D06005F2E10 /* CorrectDing.wav */; };
 		36F90E971DF51D06005F2E10 /* IncorrectBuzz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 36F90E951DF51D06005F2E10 /* IncorrectBuzz.wav */; };
+		36F90E991DF53B6A005F2E10 /* QuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F90E981DF53B6A005F2E10 /* QuestionController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		36F90E7B1DF51A49005F2E10 /* webview_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = webview_bar.png; path = Assets.xcassets/webview_bar.png; sourceTree = "<group>"; };
 		36F90E941DF51D06005F2E10 /* CorrectDing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = CorrectDing.wav; path = Assets.xcassets/CorrectDing.wav; sourceTree = "<group>"; };
 		36F90E951DF51D06005F2E10 /* IncorrectBuzz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = IncorrectBuzz.wav; path = Assets.xcassets/IncorrectBuzz.wav; sourceTree = "<group>"; };
+		36F90E981DF53B6A005F2E10 /* QuestionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			children = (
 				36F90E671DF51A3A005F2E10 /* Assets */,
 				36F90E111DF4D384005F2E10 /* AppDelegate.swift */,
+				36F90E981DF53B6A005F2E10 /* QuestionController.swift */,
 				36F90E131DF4D384005F2E10 /* ViewController.swift */,
 				36F90E151DF4D384005F2E10 /* Main.storyboard */,
 				36F90E181DF4D384005F2E10 /* Assets.xcassets */,
@@ -357,6 +360,7 @@
 			files = (
 				36F90E141DF4D384005F2E10 /* ViewController.swift in Sources */,
 				36F90E121DF4D384005F2E10 /* AppDelegate.swift in Sources */,
+				36F90E991DF53B6A005F2E10 /* QuestionController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
