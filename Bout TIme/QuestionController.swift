@@ -10,17 +10,14 @@ import UIKit
 
 class QuestionController: UIViewController {
     
-    @IBOutlet weak var eventOne: UIButton!
-    @IBOutlet weak var eventTwo: UIButton!
-    @IBOutlet weak var eventThree: UIButton!
-    @IBOutlet weak var eventFour: UIButton!
+    
+    @IBOutlet weak var eventOneLabel: UILabel!
+    @IBOutlet weak var eventTwoLabel: UILabel!
+    @IBOutlet weak var eventThreeLabel: UILabel!
+    @IBOutlet weak var eventFourLabel: UILabel!
     @IBOutlet weak var countDownTimer: UILabel!
     
     var counter = 60
-    
-    enum EventErrors: Error {
-        case OneTwoError
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +25,10 @@ class QuestionController: UIViewController {
         // Do any additional setup after loading the view.
         
         // Apply cornerRadius to the event boxes and disable user interaction
-        eventOne.layer.cornerRadius = 3
-        eventOne.isUserInteractionEnabled = false
-        eventTwo.layer.cornerRadius = 3
-        eventTwo.isUserInteractionEnabled = false
-        eventThree.layer.cornerRadius = 3
-        eventThree.isUserInteractionEnabled = false
-        eventFour.layer.cornerRadius = 3
-        eventFour.isUserInteractionEnabled = false
+        eventOneLabel.layer.cornerRadius = 3
+        eventTwoLabel.layer.cornerRadius = 3
+        eventThreeLabel.layer.cornerRadius = 3
+        eventFourLabel.layer.cornerRadius = 3
         
         
         // Start timer
@@ -63,71 +56,35 @@ class QuestionController: UIViewController {
         }
     }
     
-    @IBAction func eventOneDown(_ sender: Any) {
-        do {
-            try eventOneTwoSwap()
-        } catch {
-            fatalError("\(error)")
-        }
-    }
-    @IBAction func eventTwoUp(_ sender: Any) {
-        do {
-            try eventOneTwoSwap()
-        } catch {
-            fatalError("\(error)")
-        }
-    }
-    @IBAction func eventTwoDown(_ sender: Any) {
-        do {
-            try eventTwoThreeSwap()
-        } catch {
-            fatalError("\(error)")
-        }
-    }
-    @IBAction func eventThreeUp(_ sender: Any) {
-        do {
-            try eventTwoThreeSwap()
-        } catch {
-            fatalError("\(error)")
-        }
-    }
-    @IBAction func eventThreeDown(_ sender: Any) {
-        do {
-            try eventThreeFourSwap()
-        } catch {
-            fatalError("\(error)")
-        }
-    }
-    @IBAction func eventFourUp(_ sender: Any) {
-        do {
-            try eventThreeFourSwap()
-        } catch {
-            fatalError("\(error)")
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        switch sender.tag {
+        case 0: eventOneTwoSwap()
+        case 1: eventOneTwoSwap()
+        case 2: eventTwoThreeSwap()
+        case 3: eventTwoThreeSwap()
+        case 4: eventThreeFourSwap()
+        case 5: eventThreeFourSwap()
+        default: return
         }
     }
     
-    func eventOneTwoSwap() throws {
-        guard let temp = eventOne.currentTitle else {
-            throw EventErrors.OneTwoError
-        }
-        eventOne.setTitle(eventTwo.currentTitle, for: .normal)
-        eventTwo.setTitle(temp, for: .normal)
+
+    func eventOneTwoSwap() {
+        let temp = eventOneLabel.text
+        eventOneLabel.text = eventTwoLabel.text
+        eventTwoLabel.text = temp
     }
     
-    func eventTwoThreeSwap() throws {
-        guard let temp = eventTwo.currentTitle else {
-            throw EventErrors.OneTwoError
-        }
-        eventTwo.setTitle(eventThree.currentTitle, for: .normal)
-        eventThree.setTitle(temp, for: .normal)
+    func eventTwoThreeSwap() {
+        let temp = eventTwoLabel.text
+        eventTwoLabel.text = eventThreeLabel.text
+        eventThreeLabel.text = temp
     }
     
-    func eventThreeFourSwap() throws {
-        guard let temp = eventThree.currentTitle else {
-            throw EventErrors.OneTwoError
-        }
-        eventThree.setTitle(eventFour.currentTitle, for: .normal)
-        eventFour.setTitle(temp, for: .normal)
+    func eventThreeFourSwap() {
+        let temp = eventThreeLabel.text
+        eventThreeLabel.text = eventFourLabel.text
+        eventFourLabel.text = temp
     }
     
     
