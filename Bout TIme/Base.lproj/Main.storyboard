@@ -114,6 +114,9 @@
                                     <constraint firstAttribute="width" secondItem="q24-gm-wNY" secondAttribute="height" multiplier="35:100" id="50a-s6-d3E"/>
                                 </constraints>
                                 <state key="normal" image="down_full.png"/>
+                                <connections>
+                                    <action selector="eventOneDown:" destination="RSh-Fw-Gr6" eventType="touchUpInside" id="Ajl-yh-J48"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDn-vQ-31t">
                                 <rect key="frame" x="20" y="256" width="260" height="100"/>
@@ -133,10 +136,16 @@
                                     <constraint firstAttribute="width" secondItem="GwQ-Xj-RMd" secondAttribute="height" multiplier="7:10" id="ZyX-l7-XLh"/>
                                 </constraints>
                                 <state key="normal" image="up_half.png"/>
+                                <connections>
+                                    <action selector="eventTwoUp:" destination="RSh-Fw-Gr6" eventType="touchUpInside" id="X1a-5g-HOP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ntk-Xn-vCq">
                                 <rect key="frame" x="265" y="198" width="35" height="50"/>
                                 <state key="normal" image="down_half.png"/>
+                                <connections>
+                                    <action selector="eventTwoDown:" destination="RSh-Fw-Gr6" eventType="touchUpInside" id="CXo-eO-Z3Q"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69m-C4-5PO">
                                 <rect key="frame" x="265" y="256" width="35" height="50"/>
@@ -144,24 +153,32 @@
                                     <constraint firstAttribute="width" secondItem="69m-C4-5PO" secondAttribute="height" multiplier="7:10" id="Wza-rO-UNq"/>
                                 </constraints>
                                 <state key="normal" image="up_half.png"/>
+                                <connections>
+                                    <action selector="eventThreeUp:" destination="RSh-Fw-Gr6" eventType="touchUpInside" id="wIP-8W-epu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVh-Sv-n19">
                                 <rect key="frame" x="265" y="306" width="35" height="50"/>
                                 <state key="normal" image="down_half.png"/>
+                                <connections>
+                                    <action selector="eventThreeDown:" destination="RSh-Fw-Gr6" eventType="touchUpInside" id="caC-Sh-wVv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uT-0k-dq3">
                                 <rect key="frame" x="265" y="364" width="35" height="100"/>
-                                <state key="normal" image="down_full.png"/>
+                                <state key="normal" image="up_full.png"/>
+                                <connections>
+                                    <action selector="eventFourUp:" destination="RSh-Fw-Gr6" eventType="touchUpInside" id="Ae4-KL-tcs"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwR-e7-84D">
-                                <rect key="frame" x="142" y="485" width="37" height="36"/>
+                                <rect key="frame" x="141.5" y="485" width="37" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shake to complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpd-H0-k7z">
-                                <rect key="frame" x="89" y="517" width="143" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake to complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpd-H0-k7z">
+                                <rect key="frame" x="88.5" y="517" width="143" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -179,6 +196,7 @@
                             <constraint firstItem="KDn-vQ-31t" firstAttribute="width" secondItem="KDn-vQ-31t" secondAttribute="height" multiplier="260:100" id="FBN-HM-9mE"/>
                             <constraint firstItem="ZVh-Sv-n19" firstAttribute="leading" secondItem="69m-C4-5PO" secondAttribute="leading" id="Gdc-Pk-V0w"/>
                             <constraint firstItem="AwR-e7-84D" firstAttribute="centerX" secondItem="ljl-T5-Qed" secondAttribute="centerX" id="GzT-hY-FaW"/>
+                            <constraint firstItem="qpd-H0-k7z" firstAttribute="centerX" secondItem="AwR-e7-84D" secondAttribute="centerX" id="I51-E3-Axh"/>
                             <constraint firstItem="gq6-Mm-SEK" firstAttribute="top" secondItem="cCU-hx-ldM" secondAttribute="bottom" constant="20" id="IGA-zI-4AH"/>
                             <constraint firstAttribute="trailing" secondItem="KDn-vQ-31t" secondAttribute="trailing" constant="40" id="JjT-eF-VyM"/>
                             <constraint firstItem="GwQ-Xj-RMd" firstAttribute="trailing" secondItem="q24-gm-wNY" secondAttribute="trailing" id="MP5-H1-4GD"/>
@@ -193,6 +211,7 @@
                             <constraint firstItem="cHs-w3-tbo" firstAttribute="leading" secondItem="ljl-T5-Qed" secondAttribute="leading" constant="20" id="ZJB-TW-AfP"/>
                             <constraint firstItem="q24-gm-wNY" firstAttribute="bottom" secondItem="gq6-Mm-SEK" secondAttribute="bottom" id="aU9-et-zax"/>
                             <constraint firstAttribute="trailing" secondItem="q24-gm-wNY" secondAttribute="trailing" constant="20" id="apo-f7-6pd"/>
+                            <constraint firstItem="F2R-hl-gY8" firstAttribute="top" secondItem="qpd-H0-k7z" secondAttribute="bottom" constant="30" id="bbg-5v-LWc"/>
                             <constraint firstItem="ZVh-Sv-n19" firstAttribute="trailing" secondItem="69m-C4-5PO" secondAttribute="trailing" id="faP-bh-IVM"/>
                             <constraint firstItem="q24-gm-wNY" firstAttribute="top" secondItem="cCU-hx-ldM" secondAttribute="bottom" constant="20" id="jLI-Zc-ijQ"/>
                             <constraint firstItem="ZVh-Sv-n19" firstAttribute="top" secondItem="69m-C4-5PO" secondAttribute="bottom" id="jYu-00-alR"/>
@@ -228,6 +247,7 @@
         <image name="down_full.png" width="158" height="457"/>
         <image name="down_half.png" width="158" height="229"/>
         <image name="icon180.png" width="60" height="60"/>
+        <image name="up_full.png" width="158" height="457"/>
         <image name="up_half.png" width="158" height="229"/>
     </resources>
 </document>

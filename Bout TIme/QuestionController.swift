@@ -18,16 +18,25 @@ class QuestionController: UIViewController {
     
     var counter = 60
     
+    enum EventErrors: Error {
+        case OneTwoError
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        // Apply cornerRadius to the event boxes
+        // Apply cornerRadius to the event boxes and disable user interaction
         eventOne.layer.cornerRadius = 3
+        eventOne.isUserInteractionEnabled = false
         eventTwo.layer.cornerRadius = 3
+        eventTwo.isUserInteractionEnabled = false
         eventThree.layer.cornerRadius = 3
+        eventThree.isUserInteractionEnabled = false
         eventFour.layer.cornerRadius = 3
+        eventFour.isUserInteractionEnabled = false
+        
         
         // Start timer
         var _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
@@ -53,6 +62,75 @@ class QuestionController: UIViewController {
             dismiss(animated: true, completion: nil)
         }
     }
+    
+    @IBAction func eventOneDown(_ sender: Any) {
+        do {
+            try eventOneTwoSwap()
+        } catch {
+            fatalError("\(error)")
+        }
+    }
+    @IBAction func eventTwoUp(_ sender: Any) {
+        do {
+            try eventOneTwoSwap()
+        } catch {
+            fatalError("\(error)")
+        }
+    }
+    @IBAction func eventTwoDown(_ sender: Any) {
+        do {
+            try eventTwoThreeSwap()
+        } catch {
+            fatalError("\(error)")
+        }
+    }
+    @IBAction func eventThreeUp(_ sender: Any) {
+        do {
+            try eventTwoThreeSwap()
+        } catch {
+            fatalError("\(error)")
+        }
+    }
+    @IBAction func eventThreeDown(_ sender: Any) {
+        do {
+            try eventThreeFourSwap()
+        } catch {
+            fatalError("\(error)")
+        }
+    }
+    @IBAction func eventFourUp(_ sender: Any) {
+        do {
+            try eventThreeFourSwap()
+        } catch {
+            fatalError("\(error)")
+        }
+    }
+    
+    func eventOneTwoSwap() throws {
+        guard let temp = eventOne.currentTitle else {
+            throw EventErrors.OneTwoError
+        }
+        eventOne.setTitle(eventTwo.currentTitle, for: .normal)
+        eventTwo.setTitle(temp, for: .normal)
+    }
+    
+    func eventTwoThreeSwap() throws {
+        guard let temp = eventTwo.currentTitle else {
+            throw EventErrors.OneTwoError
+        }
+        eventTwo.setTitle(eventThree.currentTitle, for: .normal)
+        eventThree.setTitle(temp, for: .normal)
+    }
+    
+    func eventThreeFourSwap() throws {
+        guard let temp = eventThree.currentTitle else {
+            throw EventErrors.OneTwoError
+        }
+        eventThree.setTitle(eventFour.currentTitle, for: .normal)
+        eventFour.setTitle(temp, for: .normal)
+    }
+    
+    
     
 
     /*
