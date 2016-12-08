@@ -10,12 +10,23 @@ import UIKit
 
 class QuestionController: UIViewController {
     
+    let eventsController = EventsController()
+    var eventOne: Int = 0
+    var eventTwo: Int = 0
+    var eventThree: Int = 0
+    var eventFour: Int = 0
+    var gameTimer: Timer!
+    var score: Int = 0
+    var round: Int = 1
     
-    @IBOutlet weak var eventOneLabel: UILabel!
-    @IBOutlet weak var eventTwoLabel: UILabel!
-    @IBOutlet weak var eventThreeLabel: UILabel!
-    @IBOutlet weak var eventFourLabel: UILabel!
+    @IBOutlet weak var eventOneButton: UIButton!
+    @IBOutlet weak var eventTwoButton: UIButton!
+    @IBOutlet weak var eventThreeButton: UIButton!
+    @IBOutlet weak var eventFourButton: UIButton!
     @IBOutlet weak var countDownTimer: UILabel!
+    @IBOutlet weak var shakeToComplete: UILabel!
+    @IBOutlet weak var successButton: UIButton!
+    @IBOutlet weak var failButton: UIButton!
     
     var counter = 60
     
@@ -25,14 +36,15 @@ class QuestionController: UIViewController {
         // Do any additional setup after loading the view.
         
         // Apply cornerRadius to the event boxes and disable user interaction
-        eventOneLabel.layer.cornerRadius = 3
-        eventTwoLabel.layer.cornerRadius = 3
-        eventThreeLabel.layer.cornerRadius = 3
-        eventFourLabel.layer.cornerRadius = 3
+        eventOneButton.layer.cornerRadius = 3
+        eventTwoButton.layer.cornerRadius = 3
+        eventThreeButton.layer.cornerRadius = 3
+        eventFourButton.layer.cornerRadius = 3
         
+        assignEvent()
         
         // Start timer
-        var _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,13 +58,13 @@ class QuestionController: UIViewController {
             counter -= 1
             countDownTimer.text = "\(counter)"
         } else {
-            dismiss(animated: true, completion: nil)
+            checkAnswer()
         }
     }
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-            dismiss(animated: true, completion: nil)
+            checkAnswer()
         }
     }
     
@@ -64,31 +76,75 @@ class QuestionController: UIViewController {
         case 3: eventTwoThreeSwap()
         case 4: eventThreeFourSwap()
         case 5: eventThreeFourSwap()
+        case 6: nextRound()
         default: return
         }
     }
-    
 
     func eventOneTwoSwap() {
-        let temp = eventOneLabel.text
-        eventOneLabel.text = eventTwoLabel.text
-        eventTwoLabel.text = temp
+        let temp = eventOneButton.currentTitle
+        eventOneButton.setTitle(eventTwoButton.currentTitle, for: .normal)
+        eventTwoButton.setTitle(temp, for: .normal)
+        swap(&eventOne, &eventTwo)
     }
     
     func eventTwoThreeSwap() {
-        let temp = eventTwoLabel.text
-        eventTwoLabel.text = eventThreeLabel.text
-        eventThreeLabel.text = temp
+        let temp = eventTwoButton.currentTitle
+        eventTwoButton.setTitle(eventThreeButton.currentTitle, for: .normal)
+        eventThreeButton.setTitle(temp, for: .normal)
+        swap(&eventTwo, &eventThree)
     }
     
     func eventThreeFourSwap() {
-        let temp = eventThreeLabel.text
-        eventThreeLabel.text = eventFourLabel.text
-        eventFourLabel.text = temp
+        let temp = eventThreeButton.currentTitle
+        eventThreeButton.setTitle(eventFourButton.currentTitle, for: .normal)
+        eventFourButton.setTitle(temp, for: .normal)
+        swap(&eventThree, &eventFour)
     }
     
+    func assignEvent() {
+        print(round)
+        eventOne = eventsController.getRandomNumber()
+        eventTwo = eventsController.getRandomNumber()
+        eventThree = eventsController.getRandomNumber()
+        eventFour = eventsController.getRandomNumber()
+        displayEvent()
+    }
     
+    func displayEvent() {
+        do {
+            try eventOneButton.setTitle(eventsController.getEvent(index: eventOne), for: .normal)
+            try eventTwoButton.setTitle(eventsController.getEvent(index: eventTwo), for: .normal)
+            try eventThreeButton.setTitle(eventsController.getEvent(index: eventThree), for: .normal)
+            try eventFourButton.setTitle(eventsController.getEvent(index: eventFour), for: .normal)
+        } catch {
+            fatalError("\(error)")
+        }
+    }
     
+    func checkAnswer() {
+        gameTimer.invalidate()
+        countDownTimer.isHidden = true
+        shakeToComplete.isHidden = true
+        
+        if (eventOne < eventTwo) && (eventTwo < eventThree) && (eventThree < eventFour) {
+            successButton.isHidden = false
+            score += 1
+        } else {
+            failButton.isHidden = false
+        }
+    }
+    
+    func nextRound() {
+        counter = 60
+        round += 1
+        successButton.isHidden = true
+        failButton.isHidden = true
+        countDownTimer.isHidden = false
+        shakeToComplete.isHidden = false
+        assignEvent()
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+    }
 
     /*
     // MARK: - Navigation

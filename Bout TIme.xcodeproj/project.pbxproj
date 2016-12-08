@@ -37,6 +37,8 @@
 		36F90E961DF51D06005F2E10 /* CorrectDing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 36F90E941DF51D06005F2E10 /* CorrectDing.wav */; };
 		36F90E971DF51D06005F2E10 /* IncorrectBuzz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 36F90E951DF51D06005F2E10 /* IncorrectBuzz.wav */; };
 		36F90E991DF53B6A005F2E10 /* QuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F90E981DF53B6A005F2E10 /* QuestionController.swift */; };
+		36F90E9B1DF7E917005F2E10 /* HistoricalEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F90E9A1DF7E917005F2E10 /* HistoricalEvents.swift */; };
+		36F90E9D1DF7FA7E005F2E10 /* EventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F90E9C1DF7FA7E005F2E10 /* EventsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		36F90E941DF51D06005F2E10 /* CorrectDing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = CorrectDing.wav; path = Assets.xcassets/CorrectDing.wav; sourceTree = "<group>"; };
 		36F90E951DF51D06005F2E10 /* IncorrectBuzz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = IncorrectBuzz.wav; path = Assets.xcassets/IncorrectBuzz.wav; sourceTree = "<group>"; };
 		36F90E981DF53B6A005F2E10 /* QuestionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionController.swift; sourceTree = "<group>"; };
+		36F90E9A1DF7E917005F2E10 /* HistoricalEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalEvents.swift; sourceTree = "<group>"; };
+		36F90E9C1DF7FA7E005F2E10 /* EventsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,12 +149,14 @@
 			children = (
 				36F90E671DF51A3A005F2E10 /* Assets */,
 				36F90E111DF4D384005F2E10 /* AppDelegate.swift */,
+				36F90E9A1DF7E917005F2E10 /* HistoricalEvents.swift */,
 				36F90E981DF53B6A005F2E10 /* QuestionController.swift */,
 				36F90E131DF4D384005F2E10 /* ViewController.swift */,
 				36F90E151DF4D384005F2E10 /* Main.storyboard */,
 				36F90E181DF4D384005F2E10 /* Assets.xcassets */,
 				36F90E1A1DF4D384005F2E10 /* LaunchScreen.storyboard */,
 				36F90E1D1DF4D384005F2E10 /* Info.plist */,
+				36F90E9C1DF7FA7E005F2E10 /* EventsController.swift */,
 			);
 			path = "Bout TIme";
 			sourceTree = "<group>";
@@ -358,9 +364,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36F90E9B1DF7E917005F2E10 /* HistoricalEvents.swift in Sources */,
 				36F90E141DF4D384005F2E10 /* ViewController.swift in Sources */,
 				36F90E121DF4D384005F2E10 /* AppDelegate.swift in Sources */,
 				36F90E991DF53B6A005F2E10 /* QuestionController.swift in Sources */,
+				36F90E9D1DF7FA7E005F2E10 /* EventsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
