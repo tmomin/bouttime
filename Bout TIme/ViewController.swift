@@ -13,7 +13,7 @@ class ViewController: UIViewController, QuesitonControllerDelegate {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var gameOver: UILabel!
-    
+        
     enum DataError: Error {
         case NoDataReceived
     }

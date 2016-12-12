@@ -30,10 +30,12 @@ public class SoundController {
     // Play Sounds
     
     func playCorrectSound() {
+        print("play Correct Sound")
         AudioServicesPlaySystemSound(correctSound)
     }
     
     func playIncorrectSound() {
+        print("play Incorrect Sound")
         AudioServicesPlaySystemSound(incorrectSound)
     }
 }
