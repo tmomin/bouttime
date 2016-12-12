@@ -16,6 +16,7 @@ public class EventsController {
     var indexOfSelectedEvent: Int = 0
     var indexValue: Int = 0
     var randomNumber: Int = 0
+    var randomNum: UInt32 = 0
     
     enum EventError: Error {
         case EventNotFound
@@ -23,11 +24,15 @@ public class EventsController {
     
     func getRandomNumber() -> Int {
         if eventBankIndex.count == 0 {
-            randomNumber = GKRandomSource.sharedRandom().nextInt(upperBound: event.events.count)
+            randomNum = arc4random_uniform(UInt32(event.events.count))
+            randomNumber = Int(randomNum)
+            //randomNumber = GKRandomSource.sharedRandom().nextInt(upperBound: event.events.count)
         } else {
             for index in eventBankIndex {
                 if (randomNumber == index) {
-                    randomNumber = GKRandomSource.sharedRandom().nextInt(upperBound: event.events.count)
+                    randomNum = arc4random_uniform(UInt32(event.events.count))
+                    randomNumber = Int(randomNum)
+                    //randomNumber = GKRandomSource.sharedRandom().nextInt(upperBound: event.events.count)
                 }
             }
         }
@@ -48,5 +53,12 @@ public class EventsController {
             throw EventError.EventNotFound
         }
         return(Int(year)!)
+    }
+    
+    func getLink(index: Int) throws -> String {
+        guard let link = event.events[index]["Link"] else {
+            throw EventError.EventNotFound
+        }
+        return(link)
     }
 }

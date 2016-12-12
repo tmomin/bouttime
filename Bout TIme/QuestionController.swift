@@ -18,6 +18,7 @@ class QuestionController: UIViewController {
     var gameTimer: Timer!
     var score: Int = 0
     var round: Int = 1
+    var webLink: String = ""
     
     @IBOutlet weak var eventOneButton: UIButton!
     @IBOutlet weak var eventTwoButton: UIButton!
@@ -27,7 +28,7 @@ class QuestionController: UIViewController {
     @IBOutlet weak var shakeToComplete: UILabel!
     @IBOutlet weak var successButton: UIButton!
     @IBOutlet weak var failButton: UIButton!
-    
+        
     var counter = 60
     
     override func viewDidLoad() {
@@ -45,6 +46,17 @@ class QuestionController: UIViewController {
         
         // Start timer
         gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueWebView" {
+            
+            let nav = segue.destination as! UINavigationController
+            let controller = nav.topViewController as! WebViewController
+//            let controller = segue.destination as! WebViewController
+            
+            controller.link = webLink
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,7 +88,11 @@ class QuestionController: UIViewController {
         case 3: eventTwoThreeSwap()
         case 4: eventThreeFourSwap()
         case 5: eventThreeFourSwap()
-        case 6: nextRound()
+        case 6: if (round == 1) {
+            finishGame()
+        } else {
+            nextRound()
+        }
         default: return
         }
     }
@@ -103,7 +119,6 @@ class QuestionController: UIViewController {
     }
     
     func assignEvent() {
-        print(round)
         eventOne = eventsController.getRandomNumber()
         eventTwo = eventsController.getRandomNumber()
         eventThree = eventsController.getRandomNumber()
@@ -127,6 +142,7 @@ class QuestionController: UIViewController {
         countDownTimer.isHidden = true
         shakeToComplete.isHidden = true
         
+        switchEventButtonsInteration()
         if (eventOne < eventTwo) && (eventTwo < eventThree) && (eventThree < eventFour) {
             successButton.isHidden = false
             score += 1
@@ -144,8 +160,47 @@ class QuestionController: UIViewController {
         shakeToComplete.isHidden = false
         assignEvent()
         gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        switchEventButtonsInteration()
     }
-
+    
+    @IBAction func eventButtonClick(_ sender: UIButton) {
+        switch sender.tag {
+        case 7: displayWeb(index: eventOne)
+        case 8: displayWeb(index: eventTwo)
+        case 9: displayWeb(index: eventThree)
+        case 10: displayWeb(index: eventFour)
+        default: return
+        }
+    }
+    
+    func displayWeb(index: Int) {
+        do {
+            webLink = try eventsController.getLink(index: index)
+        } catch {
+            fatalError()
+        }
+        
+    }
+    
+    func switchEventButtonsInteration() {
+        if eventOneButton.isUserInteractionEnabled {
+            eventOneButton.isUserInteractionEnabled = false
+            eventTwoButton.isUserInteractionEnabled = false
+            eventThreeButton.isUserInteractionEnabled = false
+            eventFourButton.isUserInteractionEnabled = false
+        } else {
+            eventOneButton.isUserInteractionEnabled = true
+            eventTwoButton.isUserInteractionEnabled = true
+            eventThreeButton.isUserInteractionEnabled = true
+            eventFourButton.isUserInteractionEnabled = true
+        }
+    }
+    
+    func finishGame() {
+        //AddCODE
+    }
+    
+    
     /*
     // MARK: - Navigation
 
