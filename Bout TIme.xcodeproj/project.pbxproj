@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36137C911DFE7AD9003842B4 /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36137C901DFE7AD9003842B4 /* SoundController.swift */; };
 		36F90E121DF4D384005F2E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F90E111DF4D384005F2E10 /* AppDelegate.swift */; };
 		36F90E141DF4D384005F2E10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F90E131DF4D384005F2E10 /* ViewController.swift */; };
 		36F90E171DF4D384005F2E10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36F90E151DF4D384005F2E10 /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36137C901DFE7AD9003842B4 /* SoundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundController.swift; sourceTree = "<group>"; };
 		36F90E0E1DF4D384005F2E10 /* Bout TIme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bout TIme.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36F90E111DF4D384005F2E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36F90E131DF4D384005F2E10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				36F90E9C1DF7FA7E005F2E10 /* EventsController.swift */,
 				36F90E9A1DF7E917005F2E10 /* HistoricalEvents.swift */,
 				36F90E981DF53B6A005F2E10 /* QuestionController.swift */,
+				36137C901DFE7AD9003842B4 /* SoundController.swift */,
 				36F90E131DF4D384005F2E10 /* ViewController.swift */,
 				36F90EA01DFA8B55005F2E10 /* WebViewController.swift */,
 				36F90E151DF4D384005F2E10 /* Main.storyboard */,
@@ -371,6 +374,7 @@
 				36F90EA11DFA8B55005F2E10 /* WebViewController.swift in Sources */,
 				36F90E141DF4D384005F2E10 /* ViewController.swift in Sources */,
 				36F90E121DF4D384005F2E10 /* AppDelegate.swift in Sources */,
+				36137C911DFE7AD9003842B4 /* SoundController.swift in Sources */,
 				36F90E991DF53B6A005F2E10 /* QuestionController.swift in Sources */,
 				36F90E9D1DF7FA7E005F2E10 /* EventsController.swift in Sources */,
 			);

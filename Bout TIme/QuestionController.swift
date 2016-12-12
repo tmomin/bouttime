@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol QuesitonControllerDelegate {
+    func acceptData(data: Int!) throws
+}
+
 class QuestionController: UIViewController {
     
     let eventsController = EventsController()
+    let soundConroller = SoundController()
     var eventOne: Int = 0
     var eventTwo: Int = 0
     var eventThree: Int = 0
@@ -19,6 +24,9 @@ class QuestionController: UIViewController {
     var score: Int = 0
     var round: Int = 1
     var webLink: String = ""
+    
+    var delegate : QuesitonControllerDelegate?
+    var data: Int?
     
     @IBOutlet weak var eventOneButton: UIButton!
     @IBOutlet weak var eventTwoButton: UIButton!
@@ -64,6 +72,17 @@ class QuestionController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isBeingDismissed {
+            do {
+                try self.delegate?.acceptData(data: score)
+            } catch {
+                fatalError()
+            }
+        }
+    }
+    
     // func to update counter once timer starts
     func updateCounter() {
         if counter > 0 {
@@ -88,7 +107,7 @@ class QuestionController: UIViewController {
         case 3: eventTwoThreeSwap()
         case 4: eventThreeFourSwap()
         case 5: eventThreeFourSwap()
-        case 6: if (round == 1) {
+        case 6: if (round == 6) {
             finishGame()
         } else {
             nextRound()
@@ -144,9 +163,11 @@ class QuestionController: UIViewController {
         
         switchEventButtonsInteration()
         if (eventOne < eventTwo) && (eventTwo < eventThree) && (eventThree < eventFour) {
+            soundConroller.playCorrectSound()
             successButton.isHidden = false
             score += 1
         } else {
+            soundConroller.playIncorrectSound()
             failButton.isHidden = false
         }
     }
@@ -197,7 +218,7 @@ class QuestionController: UIViewController {
     }
     
     func finishGame() {
-        //AddCODE
+        dismiss(animated: true, completion: nil)
     }
     
     
